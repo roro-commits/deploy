@@ -9,7 +9,7 @@ const  cors = require('cors');
 const { stringify } = require('querystring');
 
 const app = express();
-const PORT = 8080||process.env.PORTS;
+const PORT = process.env.PORTS||8080;
 const prod = true;
 
 const routes = require('./routes/api')
