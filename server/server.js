@@ -9,13 +9,14 @@ const  cors = require('cors');
 const { stringify } = require('querystring');
 
 const app = express();
-const PORT = 8080||process.env.PORTS;
+const PORT = process.env.PORT||8085;
 const prod = true;
 
 const routes = require('./routes/api')
 
+const MONGODB_URI ='mongodb+srv://timerTest:cidaay5kelop@timerproject.ifpkw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
-mongoose.connect(process.env.MONGODB_URI||process.env.MONGODB_URIS||'mongodb://localhost/getTimer',{
+mongoose.connect(MONGODB_URI||process.env.MONGODB_URIS||'mongodb://localhost/getTimer',{
     useNewUrlParser:true,
     useUnifiedTopology: true,
 });
@@ -28,6 +29,8 @@ mongoose.connection.on('connected', () => {
 if (prod){
     app.use(express.static('client/web-build'));
 }
+
+
 
 
 app.use(function(req, res, next) {
@@ -61,4 +64,4 @@ app.use('/api',routes)
 
 
 
-app.listen( PORT, console.log(`Server ios starting at ${PORT}`))
+app.listen(PORT, console.log(`Server ios starting at ${PORT}`))
