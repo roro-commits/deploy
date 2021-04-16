@@ -14,9 +14,8 @@ const prod = true;
 
 const routes = require('./routes/api')
 
-const MONGODB_URI ='mongodb+srv://timerTest:cidaay5kelop@timerproject.ifpkw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
-mongoose.connect(MONGODB_URI||process.env.MONGODB_URIS||'mongodb://localhost/getTimer',{
+mongoose.connect(process.env.MONGODB_URI||process.env.MONGODB_URIS||'mongodb://localhost/getTimer',{
     useNewUrlParser:true,
     useUnifiedTopology: true,
 });
